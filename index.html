@@ -204,28 +204,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><div class="contact-item-label">Hours</div><div class="contact-item-value">Mon–Sat: 7:00 AM – 6:00 PM</div></div></div>
     </div>
   </div>
-  <div class="contact-form-wrap fade-up">
-    <h3>Express Estimate</h3>
-    <form id="quoteForm">
-      <div class="form-grid">
-        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="John Smith" required></div>
-        <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(615) 000-0000" required></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@email.com" required></div>
-        <div class="form-group"><label for="zip">ZIP Code</label><input type="text" id="zip" name="zip" placeholder="37201" required></div>
-        <div class="form-group"><label for="service">Service</label>
-          <select id="service" name="service" required>
-            <option value="">Choose a service</option>
-            <option>Deep Cleaning Service</option><option>Regular Cleaning</option>
-            <option>Recurring Cleaning Service</option><option>Move In/Out Cleaning</option>
-            <option>Commercial Cleaning</option><option>Airbnb & Short-Term Rental Cleaning</option>
-          </select>
-        </div>
-        <div class="form-group"><label for="sqft">Sq/ft (optional)</label><input type="text" id="sqft" name="sqft" placeholder="e.g. 1500"></div>
-        <div class="form-group full"><label for="message">Message (optional)</label><textarea id="message" name="message" placeholder="Any details about your cleaning needs..."></textarea></div>
-      </div>
-      <button type="submit" class="btn btn-primary form-submit">Send Request <i class="fas fa-paper-plane"></i></button>
-    </form>
-  </div>
 </div>
 </section>
 
@@ -257,6 +235,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       button: { backgroundColor: "#fddd0d", size: "large" },
       chatWindow: { backgroundColor: "#123da1" },
     },
+  });
+
+  // Open Typebot when clicking on "Free Quote" / contact buttons
+  document.querySelectorAll('a[href="#contact"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      Typebot.open();
+    });
   });
 </script>
 </body>

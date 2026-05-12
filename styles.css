@@ -294,11 +294,11 @@ section { padding: 100px 0; position: relative; }
 
 /* ===== CONTACT FORM ===== */
 .contact { background: var(--off-white); }
-.contact .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact .container { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 600px; margin: 0 auto; gap: 30px; }
 .contact-info h2 { margin-bottom: 16px; }
 .contact-info > p { color: var(--text-light); margin-bottom: 32px; }
-.contact-details { display: flex; flex-direction: column; gap: 20px; }
-.contact-item { display: flex; align-items: flex-start; gap: 14px; }
+.contact-details { display: inline-flex; flex-direction: column; gap: 20px; align-items: center; margin: 0 auto; text-align: left; }
+.contact-item { display: flex; align-items: center; gap: 14px; }
 .contact-icon {
   width: 44px; height: 44px; border-radius: var(--radius); flex-shrink: 0;
   background: linear-gradient(135deg, var(--navy), var(--navy-light));

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
   // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]:not([href="#contact"])').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(anchor.getAttribute('href'));
