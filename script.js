@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
   // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]:not([href="#contact"])').forEach(anchor => {
+  document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(anchor.getAttribute('href'));
@@ -143,52 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
     <button type="submit" class="btn btn-primary submit-btn">Get My Free Quote</button>
   `;
 
-  // Inject Global Modal and FAB
-  const modalHTML = `
-    <div class="quote-modal-overlay" id="quote-modal">
-      <div class="quote-modal-content">
-        <button class="quote-modal-close" id="close-quote-modal">&times;</button>
-        <div class="quote-form-wrap">
-          <h3>Get Your Free Quote</h3>
-          <div class="quote-form-success" style="display: none;">Quote requested successfully! We'll contact you shortly.</div>
-          <div class="quote-form-error" style="display: none;">Failed to send request. Please try again.</div>
-          <form class="quote-form" id="globalQuoteForm">
-             ${quoteFormHTML}
-          </form>
-        </div>
-      </div>
-    </div>
-    <button class="floating-action-btn" id="fab-quote" aria-label="Get a Free Quote">
+  // Inject Floating Action Button for SMS
+  const smsBody = encodeURIComponent("Hi! I found you through the website and would like to request a free quote.");
+  const fabHTML = `
+    <a href="sms:+16156694084?body=${smsBody}" class="floating-action-btn" id="fab-quote" aria-label="Get a Free Quote" style="text-decoration: none;">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
       <span>Get a Quote</span>
-    </button>
+    </a>
   `;
-  document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-  // Modal Logic
-  const quoteModal = document.getElementById('quote-modal');
-  const closeQuoteModalBtn = document.getElementById('close-quote-modal');
-  const fabQuote = document.getElementById('fab-quote');
-
-  function openModal() { quoteModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-  function closeModal() { quoteModal.classList.remove('active'); document.body.style.overflow = ''; }
-
-  fabQuote?.addEventListener('click', openModal);
-  closeQuoteModalBtn?.addEventListener('click', closeModal);
-  quoteModal?.addEventListener('click', e => {
-    if (e.target === quoteModal) closeModal();
-  });
-
-  // Re-route contact buttons to open modal if we are not on a page that handles it, or just use modal universally for UX
-  document.querySelectorAll('a[href="#contact"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      // On mobile always open modal. On desktop we could scroll, but modal is cleaner
-      if (window.innerWidth <= 768 || true) {
-        openModal();
-      }
-    });
-  });
+  document.body.insertAdjacentHTML('beforeend', fabHTML);
 
   // Handle Form Submission (Works for global modal and hero form if it exists)
   function handleQuoteFormSubmit(e) {
@@ -230,21 +193,36 @@ document.addEventListener('DOMContentLoaded', () => {
     f.addEventListener('submit', handleQuoteFormSubmit);
   });
 
-  // Render hero form dynamically if the container exists
-  const heroFormContainer = document.getElementById('hero-quote-form-container');
-  if (heroFormContainer) {
-    heroFormContainer.innerHTML = `
-      <div class="quote-form-wrap">
-        <h3>Get Your Free Quote</h3>
-        <div class="quote-form-success" style="display: none;">Quote requested successfully! We'll contact you shortly.</div>
-        <div class="quote-form-error" style="display: none;">Failed to send request. Please try again.</div>
-        <form class="quote-form" id="heroQuoteForm">
+  // Render form dynamically into the #contact section
+  const contactContainer = document.querySelector('#contact .container');
+  if (contactContainer) {
+    const formWrapHTML = `
+      <div class="quote-form-wrap" style="flex: 1; max-width: 500px; width: 100%; text-align: left; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Get Your Free Quote</h3>
+        <div class="quote-form-success" style="display: none; color: green; margin-bottom: 15px;">Quote requested successfully! We'll contact you shortly.</div>
+        <div class="quote-form-error" style="display: none; color: red; margin-bottom: 15px;">Failed to send request. Please try again.</div>
+        <form class="quote-form" id="contactQuoteForm">
            ${quoteFormHTML}
         </form>
       </div>
     `;
-    // Attach listener to the newly injected form
-    document.getElementById('heroQuoteForm').addEventListener('submit', handleQuoteFormSubmit);
+    
+    // Style the container for a side-by-side layout on desktop
+    contactContainer.style.display = 'flex';
+    contactContainer.style.flexWrap = 'wrap';
+    contactContainer.style.justifyContent = 'space-between';
+    contactContainer.style.alignItems = 'center';
+    contactContainer.style.gap = '40px';
+    
+    const contactInfo = contactContainer.querySelector('.contact-info');
+    if (contactInfo) {
+       contactInfo.style.flex = '1';
+       contactInfo.style.minWidth = '300px';
+       contactInfo.style.textAlign = 'left';
+    }
+    
+    contactContainer.insertAdjacentHTML('beforeend', formWrapHTML);
+    document.getElementById('contactQuoteForm').addEventListener('submit', handleQuoteFormSubmit);
   }
 
   // Testimonial auto-scroll
