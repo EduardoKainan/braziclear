@@ -176,10 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(() => {
         successMsg.style.display = 'block';
         formEl.style.display = 'none';
-        formEl.reset();
         setTimeout(() => {
           // Use ?body= for SMS pre-fill
           window.location.href = `sms:+16156694084?body=${messageBody}`;
+          formEl.reset();
         }, 500);
       }, (error) => {
         console.error('EmailJS Error:', error);
