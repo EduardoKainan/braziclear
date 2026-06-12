@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
-  });
+  }, { passive: true });
 
   // Mobile menu
   const hamburger = document.querySelector('.hamburger');
@@ -83,15 +83,28 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.remove('active');
       if (link.getAttribute('href') === '#' + current) link.classList.add('active');
     });
-  });
+  }, { passive: true });
 
   // EmailJS & Quote Form Logic
-  const emailJsScript = document.createElement('script');
-  emailJsScript.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
-  emailJsScript.onload = () => {
-    emailjs.init({ publicKey: '_M1M0aep8-q2RYQph' });
-  };
-  document.head.appendChild(emailJsScript);
+  let emailJsPromise;
+  function loadEmailJs() {
+    if (window.emailjs) return Promise.resolve(window.emailjs);
+    if (emailJsPromise) return emailJsPromise;
+
+    emailJsPromise = new Promise((resolve, reject) => {
+      const emailJsScript = document.createElement('script');
+      emailJsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+      emailJsScript.async = true;
+      emailJsScript.onload = () => {
+        emailjs.init({ publicKey: '_M1M0aep8-q2RYQph' });
+        resolve(emailjs);
+      };
+      emailJsScript.onerror = reject;
+      document.head.appendChild(emailJsScript);
+    });
+
+    return emailJsPromise;
+  }
 
   const quoteFormHTML = `
     <div class="form-group row">
@@ -154,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.insertAdjacentHTML('beforeend', fabHTML);
 
   // Handle Form Submission (Works for global modal and hero form if it exists)
-  function handleQuoteFormSubmit(e) {
+  async function handleQuoteFormSubmit(e) {
     e.preventDefault();
     const formEl = e.target;
     const submitBtn = formEl.querySelector('.submit-btn');
@@ -172,21 +185,21 @@ document.addEventListener('DOMContentLoaded', () => {
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
 
-    emailjs.sendForm('service_g1o7nfc', 'template_i2m9acj', formEl)
-      .then(() => {
-        successMsg.style.display = 'block';
-        formEl.style.display = 'none';
-        setTimeout(() => {
-          // Use ?body= for SMS pre-fill
-          window.location.href = `sms:+16156694084?body=${messageBody}`;
-          formEl.reset();
-        }, 500);
-      }, (error) => {
-        console.error('EmailJS Error:', error);
-        errorMsg.style.display = 'block';
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      });
+    try {
+      await loadEmailJs();
+      await emailjs.sendForm('service_g1o7nfc', 'template_i2m9acj', formEl);
+      successMsg.style.display = 'block';
+      formEl.style.display = 'none';
+      setTimeout(() => {
+        window.location.href = `sms:+16156694084?body=${messageBody}`;
+        formEl.reset();
+      }, 500);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      errorMsg.style.display = 'block';
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
   }
 
   document.querySelectorAll('.quote-form').forEach(f => {

@@ -12,11 +12,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BraziClean — Professional Residential & Commercial Cleaning in Nashville, TN</title>
 <meta name="description" content="BraziClean offers professional residential and commercial cleaning services in Nashville, Franklin, Brentwood, Goodlettsville & Hendersonville TN. Get a free quote today!">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -27,9 +30,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HEADER -->
 <header class="header" id="top">
 <div class="container">
-  <a href="#top" class="header-logo"><img src="logo-brazi-bg.webp" alt="BraziClean Logo" loading="eager" decoding="async"></a>
+  <a href="#top" class="header-logo"><img src="images/logo-braziclean-240.webp" alt="BraziClean Logo" width="240" height="240" loading="eager" decoding="async"></a>
   <nav class="nav-links">
-    <a href="#about">About</a><a href="#services">Services</a><a href="#process">How It Works</a>
+    <a href="#results">Results</a><a href="#services">Services</a><a href="#process">How It Works</a>
     <a href="#why-us">Why Us</a><a href="#testimonials">Reviews</a><a href="#contact">Contact</a>
   </nav>
   <div class="header-actions">
@@ -43,7 +46,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="mobile-overlay"></div>
 <nav class="mobile-nav">
 <button class="mobile-nav-close">&times;</button>
-<a href="#about">About</a><a href="#services">Services</a><a href="#process">How It Works</a>
+<a href="#results">Results</a><a href="#services">Services</a><a href="#process">How It Works</a>
 <a href="#why-us">Why Us</a><a href="#testimonials">Reviews</a><a href="#contact">Contact</a>
 </nav>
 
@@ -59,7 +62,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="hero-image">
-    <img src="images/hero-cleaning.webp" alt="Professional BraziClean cleaner" loading="eager" decoding="async">
+    <img src="images/hero-cleaning.webp" alt="Professional BraziClean cleaner" width="1402" height="1122" loading="eager" fetchpriority="high" decoding="async">
     <div class="hero-float-card">
       <div class="float-icon"><i class="fas fa-smile"></i></div>
       <div><div class="float-number">200+</div><div class="float-label">Happy Clients</div></div>
@@ -68,18 +71,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<!-- RESULTS -->
+<section class="results" id="results">
 <div class="container">
-  <div class="about-image fade-up">
-    <div class="accent-border"></div>
-    <img src="images/about-team.webp" alt="BraziClean Team" loading="lazy" decoding="async">
+  <div class="results-header fade-up">
+    <div class="section-label"><i class="fas fa-sparkles"></i> The BraziClean Standard</div>
+    <h2>See the Difference a Professional Clean Makes</h2>
+    <p class="section-subtitle center">Visual examples of how professional cleaning can turn everyday mess into a fresh, comfortable home.</p>
   </div>
-  <div class="about-text fade-up">
-    <div class="section-label"><i class="fas fa-sparkles"></i> About BraziClean</div>
-    <h2>Cleaning That Goes Beyond Expectations</h2>
-    <p>At BraziClean, we believe a clean home is more than just appearance — it's about comfort, peace of mind, and a better daily life. We deliver a reliable and detail-oriented service that truly transforms your space.</p>
-    <p>Our team is committed to consistency, care, and professionalism in every visit. We offer flexible scheduling and services tailored to your needs, treating your home with the same attention we would give our own.</p>
+  <div class="results-grid">
+    <figure class="result-card fade-up">
+      <div class="result-image">
+        <img src="images/results/kitchen-before-after.webp" alt="Kitchen before and after professional cleaning" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="result-label result-label-before">Before</span>
+        <span class="result-label result-label-after">After</span>
+      </div>
+      <figcaption>Kitchen Deep Clean</figcaption>
+    </figure>
+    <figure class="result-card fade-up">
+      <div class="result-image">
+        <img src="images/results/bathroom-before-after.webp" alt="Bathroom before and after professional cleaning" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="result-label result-label-before">Before</span>
+        <span class="result-label result-label-after">After</span>
+      </div>
+      <figcaption>Bathroom Detail Cleaning</figcaption>
+    </figure>
+    <figure class="result-card fade-up">
+      <div class="result-image">
+        <img src="images/results/living-room-before-after.webp" alt="Living room before and after professional cleaning" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="result-label result-label-before">Before</span>
+        <span class="result-label result-label-after">After</span>
+      </div>
+      <figcaption>Living Room Refresh</figcaption>
+    </figure>
+    <figure class="result-card fade-up">
+      <div class="result-image">
+        <img src="images/results/bedroom-before-after.webp" alt="Bedroom before and after professional cleaning" width="1200" height="800" loading="lazy" decoding="async">
+        <span class="result-label result-label-before">Before</span>
+        <span class="result-label result-label-after">After</span>
+      </div>
+      <figcaption>Bedroom Reset</figcaption>
+    </figure>
+  </div>
+  <div class="results-proof fade-up">
+    <p>Reliable, detail-oriented cleaning tailored to your home and schedule.</p>
     <div class="counters">
       <div class="counter-item"><div class="counter-number"><span class="prefix">+</span><span data-target="200">0</span></div><div class="counter-label">Happy Clients</div></div>
       <div class="counter-item"><div class="counter-number"><span class="prefix">+</span><span data-target="1000">0</span></div><div class="counter-label">Homes Cleaned</div></div>
@@ -213,9 +248,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="footer">
 <div class="container">
   <div class="footer-grid">
-    <div class="footer-brand"><img src="logo-brazi-bg.webp" alt="BraziClean" loading="lazy" decoding="async"><p>Professional residential and commercial cleaning services in Nashville, TN and surrounding areas. Your home deserves the best.</p></div>
+    <div class="footer-brand"><img src="images/logo-braziclean-240.webp" alt="BraziClean" width="240" height="240" loading="lazy" decoding="async"><p>Professional residential and commercial cleaning services in Nashville, TN and surrounding areas. Your home deserves the best.</p></div>
     <div><h4>Services</h4><ul><li><a href="#services">Deep Cleaning</a></li><li><a href="#services">Regular Cleaning</a></li><li><a href="#services">Recurring Cleaning</a></li><li><a href="#services">Move In/Out</a></li><li><a href="#services">Commercial</a></li><li><a href="#services">Airbnb Rental</a></li></ul></div>
-    <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#process">How It Works</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#areas">Service Areas</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#results">Our Results</a></li><li><a href="#process">How It Works</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#areas">Service Areas</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="tel:+16156694084"><i class="fas fa-phone"></i> 615.669.4084</a></li><li><i class="fas fa-location-dot"></i> Nashville, TN</li></ul></div>
   </div>
   <div class="footer-bottom">
@@ -228,7 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 
 </body>
