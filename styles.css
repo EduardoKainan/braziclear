@@ -187,6 +187,32 @@ section { padding: 100px 0; position: relative; }
 .counter-stars { display: flex; justify-content: center; gap: 2px; margin-bottom: 4px; }
 .counter-stars svg { width: 16px; height: 16px; fill: var(--gold); }
 
+/* ===== BRAND STORY ===== */
+.brand-story { background: var(--off-white); }
+.story-content { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
+.story-image { position: sticky; top: 100px; }
+.story-image img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+.story-text .section-label { margin-bottom: 20px; }
+.story-text h2 { font-weight: 700; margin-bottom: 20px; }
+.story-intro { font-size: 1.1rem; color: var(--navy); font-weight: 600; line-height: 1.6; margin-bottom: 16px; }
+.story-text p { color: var(--text-light); line-height: 1.7; margin-bottom: 14px; }
+.story-commitments { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 28px 32px; margin: 28px 0; box-shadow: var(--shadow); }
+.story-commitments h3 { font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--navy); margin-bottom: 14px; font-size: 1rem; }
+.story-commitments ul { list-style: none; padding: 0; margin: 0; }
+.story-commitments li { padding: 8px 0 8px 28px; position: relative; color: var(--text-light); line-height: 1.5; }
+.story-commitments li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+.story-closing { font-weight: 500; color: var(--navy) !important; font-size: 1.05rem; }
+.story-tagline { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--navy) !important; margin-top: 8px; }
+.story-signoff { margin-top: 20px; padding: 16px 20px; background: var(--navy); border-radius: var(--radius); color: var(--white); line-height: 1.6; font-size: 0.9rem; }
+.story-signoff a { color: var(--gold-light); text-decoration: none; font-weight: 600; }
+.story-signoff a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .story-content { grid-template-columns: 1fr; gap: 32px; }
+  .story-image { position: static; max-width: 320px; margin: 0 auto; }
+  .story-commitments { padding: 20px 24px; }
+}
+
 /* ===== SERVICES ===== */
 .services { background: var(--white); }
 .services-header { text-align: center; margin-bottom: 60px; }
