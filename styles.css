@@ -374,7 +374,7 @@ section { padding: 100px 0; position: relative; }
 /* ===== FOOTER ===== */
 .footer { background: var(--navy-dark); color: rgba(255,255,255,0.7); padding: 60px 0 30px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand img { height: 110px; margin-bottom: 16px; }
+.footer-brand img { height: 110px; width: auto; margin-bottom: 16px; }
 .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
 .footer h4 { color: var(--white); font-size: 1rem; margin-bottom: 16px; font-family: 'Poppins', sans-serif; }
 .footer ul { display: flex; flex-direction: column; gap: 10px; }
