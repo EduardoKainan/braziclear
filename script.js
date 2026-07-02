@@ -46,29 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Animated counters
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target);
-        const duration = 2000;
-        const startTime = performance.now();
-
-        function updateCounter(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target).toLocaleString();
-          if (progress < 1) requestAnimationFrame(updateCounter);
-        }
-        requestAnimationFrame(updateCounter);
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+  // Keep statistics readable immediately; avoid showing "+0" while the page loads.
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    if (!Number.isNaN(target)) el.textContent = target.toLocaleString();
+  });
 
   // Active nav link on scroll
   const sections = document.querySelectorAll('section[id]');
