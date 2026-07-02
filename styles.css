@@ -268,7 +268,11 @@ section { padding: 100px 0; position: relative; }
   background: linear-gradient(135deg, var(--navy), var(--navy-light));
   display: flex; align-items: center; justify-content: center;
 }
-.step-icon svg { width: 28px; height: 28px; fill: var(--gold); }
+.step-icon i {
+  color: var(--gold-light);
+  font-size: 1.75rem;
+  line-height: 1;
+}
 .step-number {
   position: absolute; top: 12px; right: 16px; width: 28px; height: 28px;
   border-radius: 50%; background: var(--gold); color: var(--navy);
