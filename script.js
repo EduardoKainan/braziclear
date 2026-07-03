@@ -167,6 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
 
+    // Meta Pixel — Lead event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: 'Free Quote Form',
+        content_category: data.cleaning_type || 'Cleaning',
+        value: 0,
+        currency: 'USD'
+      });
+    }
+
     try {
       await loadEmailJs();
       await emailjs.sendForm('service_g1o7nfc', 'template_i2m9acj', formEl);
@@ -237,4 +247,33 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('mouseenter', () => clearInterval(scrollInterval));
     slider.addEventListener('mouseleave', startAutoScroll);
   }
+
+  // ─── Meta Pixel — Click Tracking ───
+  function trackContact(label) {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Contact', { content_name: label });
+    }
+  }
+
+  // Track all CTA buttons (Free Quote / Request Quote / Get a Quote)
+  document.querySelectorAll('.btn-primary, .service-link, .header-cta').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const label = this.textContent.trim() || 'CTA Button';
+      trackContact(label.length > 40 ? label.substring(0, 40) : label);
+    });
+  });
+
+  // Track Floating Action Button
+  const fab = document.getElementById('fab-quote');
+  if (fab) {
+    fab.addEventListener('click', () => trackContact('FAB Get a Quote'));
+  }
+
+  // Track phone link clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', function() {
+      trackContact('Phone Call: ' + (this.textContent.trim() || 'Phone Link'));
+    });
+  });
+
 });
