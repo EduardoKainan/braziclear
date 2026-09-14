@@ -1,9 +1,9 @@
 /* ===== BraziClean — Design System ===== */
 
 :root {
-  --navy: #0A1F5C;
-  --navy-light: #122B6E;
-  --navy-dark: #071542;
+  --navy: #4169E1;
+  --navy-light: #5B7FE8;
+  --navy-dark: #2E4FA8;
   --gold: #E8A817;
   --gold-light: #F5C94D;
   --gold-dark: #C48E0F;
@@ -412,10 +412,14 @@ section { padding: 100px 0; position: relative; }
 
 /* ===== CONTACT FORM ===== */
 .contact { background: var(--off-white); }
-.contact .container { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 600px; margin: 0 auto; gap: 30px; }
+.contact .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; text-align: left; max-width: 1100px; margin: 0 auto; gap: 40px; }
+.contact-info { flex: 1 1 360px; }
+.quote-form-wrap { flex: 1 1 440px; max-width: 500px; width: 100%; }
+.quote-success-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.quote-success-actions .btn { font-size: 0.85rem; padding: 10px 18px; }
 .contact-info h2 { margin-bottom: 16px; }
 .contact-info > p { color: var(--text-light); margin-bottom: 32px; }
-.contact-details { display: inline-flex; flex-direction: column; gap: 20px; align-items: center; margin: 0 auto; text-align: left; }
+.contact-details { display: inline-flex; flex-direction: column; gap: 20px; align-items: flex-start; margin: 0; text-align: left; }
 .contact-item { display: flex; align-items: center; gap: 14px; }
 .contact-icon {
   width: 44px; height: 44px; border-radius: var(--radius); flex-shrink: 0;
