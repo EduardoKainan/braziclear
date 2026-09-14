@@ -817,3 +817,8 @@ body { background: #fff; }
   .hero-buttons .btn { justify-content: center; }
   .hero-image img { height: 480px; }
 }
+
+/* ===== CENTERED LOGO / NASHVILLE-ONLY HEADER ===== */
+.header .container { justify-content: center; position: relative; }
+.header-home { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 600px) { .header-home { right: 16px; } }
