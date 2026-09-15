@@ -881,3 +881,13 @@ h1, h2, h3, h4, h5 { font-family: 'Inter', Arial, sans-serif; }
   .hero-text { font-size: 1.12rem; }
   .hero-image img { height: 500px; }
 }
+
+/* ===== CLIENT FEEDBACK POLISH ===== */
+.hero-content .section-label { font-size: 1.15rem; color: var(--gold-dark); font-weight: 600; }
+.footer-neighborhoods { margin-top: 12px; font-size: .86rem; line-height: 1.6; }
+.footer-neighborhoods strong { color: var(--navy); }
+@media (max-width: 600px) {
+  .header .container { height: 100px; }
+  .header-logo img { height: 88px; }
+  .hero .container { gap: 28px; }
+}
