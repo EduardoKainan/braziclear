@@ -831,3 +831,33 @@ body { background: #fff; }
 .header-home { left: 24px; right: auto; }
 .footer-brand img { background: var(--navy-dark); border-radius: 16px; padding: 10px; object-fit: contain; }
 @media (max-width: 600px) { .header-home { left: 16px; right: auto; } }
+
+/* ===== JACKALOPE-INSPIRED MINIMAL FORM SYSTEM ===== */
+body { font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 1.8; }
+h1, h2, h3, h4, h5 { font-family: 'Inter', Arial, sans-serif; }
+.hero { padding: 128px 0 112px; }
+.hero-content { max-width: 610px; }
+.hero h1 { font-size: clamp(2.3rem, 4.5vw, 3.45rem); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; }
+.hero-text { font-size: 1.12rem; line-height: 1.8; color: #111827; }
+.hero-image img { height: 590px; border-radius: 22px; }
+.contact { padding: 126px 0 132px; }
+.contact .container { flex-direction: column; max-width: 760px; gap: 42px; text-align: center; }
+.contact-info { flex: none; width: 100%; }
+.contact-info .section-label { justify-content: center; }
+.contact-info h2 { font-size: clamp(1.9rem, 4vw, 2.4rem); font-weight: 500; line-height: 1.35; }
+.contact-info > p { font-size: 1.05rem; margin-bottom: 0; }
+.contact-details { display: none; }
+.quote-form-wrap { flex: none; max-width: 590px; padding: 0; background: transparent; border: 0; box-shadow: none; }
+.quote-form-wrap h3 { font-size: 2rem; font-weight: 500; line-height: 1.35; margin-bottom: 34px; }
+.quote-form-wrap .form-group { gap: 6px; margin-bottom: 20px; text-align: left; }
+.quote-form-wrap .form-group.row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.quote-form-wrap .form-group label { color: #111; font-size: .85rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.quote-form-wrap .form-group input, .quote-form-wrap .form-group textarea { background: #fafafa; border: 1px solid #d8d8d8; border-radius: 2px; padding: 11px 12px; font-size: 1rem; line-height: 1.8; }
+.quote-form-wrap .form-group input:focus, .quote-form-wrap .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(235,203,85,.2); }
+.quote-form-wrap .submit-btn { min-width: 150px; border-radius: 2px; padding: 16px 30px; font-weight: 500; }
+@media (max-width: 600px) {
+  .hero { padding: 96px 0 80px; }
+  .hero-image img { height: 470px; border-radius: 18px; }
+  .contact { padding: 88px 0 96px; }
+  .quote-form-wrap .form-group.row { grid-template-columns: 1fr; gap: 0; }
+}
