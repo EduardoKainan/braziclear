@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = Object.fromEntries(formData.entries());
     const fullName = `${data.first_name || ''} ${data.last_name || ''}`.trim();
     formEl.querySelector('[name="user_name"]').value = fullName;
-    const messageBody = encodeURIComponent(`Hi! My name is ${fullName}. I would like to request a quote. ${data.property_details || ''} My email is ${data.user_email}.`);
 
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
@@ -148,8 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
       await emailjs.sendForm('service_g1o7nfc', 'template_i2m9acj', formEl);
       successMsg.style.display = 'block';
       formEl.style.display = 'none';
-      const smsLink = successMsg.querySelector('[data-sms-link]');
-      if (smsLink) smsLink.href = `sms:+16156694084?body=${messageBody}`;
     } catch (error) {
       console.error('EmailJS Error:', error);
       errorMsg.style.display = 'block';
@@ -168,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formWrapHTML = `
       <div class="quote-form-wrap" style="flex: 1; max-width: 500px; width: 100%; text-align: left; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
         <h3 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Let's work together. We'd love to learn more about your needs.</h3>
-        <div class="quote-form-success" style="display: none; color: green; margin-bottom: 15px;"><strong>Thank you!</strong> Your request was sent successfully. We'll contact you shortly.<div class="quote-success-actions"><a class="btn btn-primary" data-sms-link href="#">Text us</a><a class="btn btn-secondary" href="tel:+16156694084">Call (615) 669-4084</a></div></div>
+        <div class="quote-form-success" style="display: none; color: green; margin-bottom: 15px;"><strong>Thank you!</strong> Your request was sent successfully. We'll contact you shortly.</div>
         <div class="quote-form-error" style="display: none; color: red; margin-bottom: 15px;">Failed to send request. Please try again.</div>
         <form class="quote-form" id="contactQuoteForm">
            ${quoteFormHTML}
